@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cinemaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="cinemaModelStoreContainer">
+          <EntitySet Name="Description" EntityType="cinemaModel.Store.Description" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DescriptionGenres" EntityType="cinemaModel.Store.DescriptionGenres" store:Type="Tables" store:Schema="dbo" store:Name="DescriptionGenres">
+            <DefiningQuery>SELECT 
+      [DescriptionGenres].[DescriptionId] AS [DescriptionId], 
+      [DescriptionGenres].[GenresName] AS [GenresName]
+      FROM [dbo].[DescriptionGenres] AS [DescriptionGenres]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PerformanceDays" EntityType="cinemaModel.Store.PerformanceDays" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shows" EntityType="cinemaModel.Store.Shows" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_descriptionGenres_descriptionId_description_id" Association="cinemaModel.Store.fk_descriptionGenres_descriptionId_description_id">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="DescriptionGenres" EntitySet="DescriptionGenres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_performanceDays_showId_show_id" Association="cinemaModel.Store.fk_performanceDays_showId_show_id">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="PerformanceDays" EntitySet="PerformanceDays" />
+          </AssociationSet>
+          <AssociationSet Name="fk_show_descriptionId_description_id" Association="cinemaModel.Store.fk_show_descriptionId_description_id">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="Shows" EntitySet="Shows" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AboutShow" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="Actors" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="Produsers" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="DurationInMinutes" Type="int" Nullable="false" />
+          <Property Name="Scenery" Type="nvarchar" Nullable="false" MaxLength="512" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'cinema.dbo.DescriptionGenres' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DescriptionGenres">
+          <Key>
+            <PropertyRef Name="DescriptionId" />
+            <PropertyRef Name="GenresName" />
+          </Key>
+          <Property Name="DescriptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GenresName" Type="nvarchar" Nullable="false" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="PerformanceDays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="ShowId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="512" />
+          <Property Name="DescriptionId" Type="int" Nullable="false" />
+          <Property Name="CinemaHollHome" Type="nvarchar" Nullable="false" MaxLength="512" />
+        </EntityType>
+        <Association Name="fk_descriptionGenres_descriptionId_description_id">
+          <End Role="Description" Type="cinemaModel.Store.Description" Multiplicity="1" />
+          <End Role="DescriptionGenres" Type="cinemaModel.Store.DescriptionGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DescriptionGenres">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_performanceDays_showId_show_id">
+          <End Role="Shows" Type="cinemaModel.Store.Shows" Multiplicity="1" />
+          <End Role="PerformanceDays" Type="cinemaModel.Store.PerformanceDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PerformanceDays">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_show_descriptionId_description_id">
+          <End Role="Description" Type="cinemaModel.Store.Description" Multiplicity="1" />
+          <End Role="Shows" Type="cinemaModel.Store.Shows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shows">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cinemaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="cinemaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Description" EntityType="cinemaModel.Description" />
+          <EntitySet Name="DescriptionGenres" EntityType="cinemaModel.DescriptionGenres" />
+          <EntitySet Name="PerformanceDays" EntityType="cinemaModel.PerformanceDays" />
+          <EntitySet Name="Shows" EntityType="cinemaModel.Shows" />
+          <AssociationSet Name="fk_descriptionGenres_descriptionId_description_id" Association="cinemaModel.fk_descriptionGenres_descriptionId_description_id">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="DescriptionGenres" EntitySet="DescriptionGenres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_show_descriptionId_description_id" Association="cinemaModel.fk_show_descriptionId_description_id">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="Shows" EntitySet="Shows" />
+          </AssociationSet>
+          <AssociationSet Name="fk_performanceDays_showId_show_id" Association="cinemaModel.fk_performanceDays_showId_show_id">
+            <End Role="Shows" EntitySet="Shows" />
+            <End Role="PerformanceDays" EntitySet="PerformanceDays" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutShow" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Actors" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="Produsers" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="DurationInMinutes" Type="Int32" Nullable="false" />
+          <Property Name="Scenery" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="DescriptionGenres" Relationship="cinemaModel.fk_descriptionGenres_descriptionId_description_id" FromRole="Description" ToRole="DescriptionGenres" />
+          <NavigationProperty Name="Shows" Relationship="cinemaModel.fk_show_descriptionId_description_id" FromRole="Description" ToRole="Shows" />
+        </EntityType>
+        <EntityType Name="DescriptionGenres">
+          <Key>
+            <PropertyRef Name="DescriptionId" />
+            <PropertyRef Name="GenresName" />
+          </Key>
+          <Property Name="DescriptionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="GenresName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Description" Relationship="cinemaModel.fk_descriptionGenres_descriptionId_description_id" FromRole="DescriptionGenres" ToRole="Description" />
+        </EntityType>
+        <EntityType Name="PerformanceDays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShowId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shows" Relationship="cinemaModel.fk_performanceDays_showId_show_id" FromRole="PerformanceDays" ToRole="Shows" />
+        </EntityType>
+        <EntityType Name="Shows">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="DescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="CinemaHollHome" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Description" Relationship="cinemaModel.fk_show_descriptionId_description_id" FromRole="Shows" ToRole="Description" />
+          <NavigationProperty Name="PerformanceDays" Relationship="cinemaModel.fk_performanceDays_showId_show_id" FromRole="Shows" ToRole="PerformanceDays" />
+        </EntityType>
+        <Association Name="fk_descriptionGenres_descriptionId_description_id">
+          <End Role="Description" Type="cinemaModel.Description" Multiplicity="1" />
+          <End Role="DescriptionGenres" Type="cinemaModel.DescriptionGenres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DescriptionGenres">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_show_descriptionId_description_id">
+          <End Role="Description" Type="cinemaModel.Description" Multiplicity="1" />
+          <End Role="Shows" Type="cinemaModel.Shows" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shows">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_performanceDays_showId_show_id">
+          <End Role="Shows" Type="cinemaModel.Shows" Multiplicity="1" />
+          <End Role="PerformanceDays" Type="cinemaModel.PerformanceDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shows">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PerformanceDays">
+              <PropertyRef Name="ShowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cinemaModelStoreContainer" CdmEntityContainer="cinemaEntities">
+          <EntitySetMapping Name="Description">
+            <EntityTypeMapping TypeName="cinemaModel.Description">
+              <MappingFragment StoreEntitySet="Description">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AboutShow" ColumnName="AboutShow" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="Produsers" ColumnName="Produsers" />
+                <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+                <ScalarProperty Name="Scenery" ColumnName="Scenery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DescriptionGenres">
+            <EntityTypeMapping TypeName="cinemaModel.DescriptionGenres">
+              <MappingFragment StoreEntitySet="DescriptionGenres">
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="GenresName" ColumnName="GenresName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerformanceDays">
+            <EntityTypeMapping TypeName="cinemaModel.PerformanceDays">
+              <MappingFragment StoreEntitySet="PerformanceDays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="ShowId" ColumnName="ShowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shows">
+            <EntityTypeMapping TypeName="cinemaModel.Shows">
+              <MappingFragment StoreEntitySet="Shows">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="CinemaHollHome" ColumnName="CinemaHollHome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
