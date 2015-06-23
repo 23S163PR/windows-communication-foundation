@@ -1,11 +1,11 @@
- -- create database cinemadb 
- -- use cinemadb
+ --create database cinemadb 
+ use cinemadb
 CREATE TABLE [Descriptions](
 	[Id] INT PRIMARY KEY NOT NULL identity(1,1)
 	,[AboutShow] NVARCHAR(MAX)
 	,[Actors] NVARCHAR(MAX)
 	,[Produsers] NVARCHAR(256)
-	,[DurationInMinutes] INT
+	,[DurationInMinutes] INT not null
 	,[Scenary] NVARCHAR(256)
 	,[Genres] NVARCHAR(MAX)
 )
@@ -26,3 +26,7 @@ CREATE TABLE [PerformanceDays](
 	CONSTRAINT fk_PerformanceDays_ShowId_Shows_id 
 	FOREIGN KEY ([ShowId]) REFERENCES [Shows](Id)
 )
+
+--drop database cinemadb
+
+
