@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://itstep.org/CalculatorSerice/V1" elementFormDefault="qualified" targetNamespace="http://itstep.org/CalculatorSerice/V1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetPythons">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parrotsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPythonsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPythonsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParrots">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pythonsCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParrotsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetParrotsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
