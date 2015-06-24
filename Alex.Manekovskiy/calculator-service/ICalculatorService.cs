@@ -15,4 +15,13 @@ namespace calculator_service
         [OperationContract]
         int GetParrots(int pythonsCount);
     }
+
+    [ServiceContract(Namespace = "http://itstep.org/CalculatorSerice/V2")]
+    public interface ICalculatorService2 : ICalculatorService
+    {
+        [OperationContract(Name = "GetFloatingPointPythons")]
+        double GetPythons(double parrotsCount);
+        [OperationContract(Name = "GetFloatingPointParrots")]
+        double GetParrots(double pythonsCount);
+    }
 }

@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace calculator_service_client.ServiceReference {
+namespace bindings_demo_service_client.CalculatorServiceV1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://itstep.org/CalculatorSerice/V1", ConfigurationName="ServiceReference.ICalculatorService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://itstep.org/CalculatorSerice/V1", ConfigurationName="CalculatorServiceV1.ICalculatorService")]
     public interface ICalculatorService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetPythons", ReplyAction="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetPythonsResponse")]
@@ -29,12 +29,12 @@ namespace calculator_service_client.ServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ICalculatorServiceChannel : calculator_service_client.ServiceReference.ICalculatorService, System.ServiceModel.IClientChannel {
+    public interface ICalculatorServiceChannel : bindings_demo_service_client.CalculatorServiceV1.ICalculatorService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class CalculatorServiceClient : System.ServiceModel.ClientBase<calculator_service_client.ServiceReference.ICalculatorService>, calculator_service_client.ServiceReference.ICalculatorService {
+    public partial class CalculatorServiceClient : System.ServiceModel.ClientBase<bindings_demo_service_client.CalculatorServiceV1.ICalculatorService>, bindings_demo_service_client.CalculatorServiceV1.ICalculatorService {
         
         public CalculatorServiceClient() {
         }

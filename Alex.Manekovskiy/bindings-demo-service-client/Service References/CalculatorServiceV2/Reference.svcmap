@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="993a01bc-f54b-4697-a78b-97333e853cd4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://a5comp13:1337/calculator" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CalculatorService.wsdl" MetadataType="Wsdl" ID="4b3753fb-35a0-450c-9fbe-fd3494dd635c" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?wsdl" />
+    <MetadataFile FileName="calculator.wsdl" MetadataType="Wsdl" ID="20cd83e0-88fb-42ac-ae8a-21de92064eaf" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?wsdl=wsdl1" />
+    <MetadataFile FileName="calculator1.wsdl" MetadataType="Wsdl" ID="04c55210-b3f0-44d9-b33d-2f5ae3195292" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?wsdl=wsdl0" />
+    <MetadataFile FileName="calculator.disco" MetadataType="Disco" ID="d849af73-c5f0-4267-8d32-7d89f40f3453" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?disco" />
+    <MetadataFile FileName="calculator.xsd" MetadataType="Schema" ID="3cc21411-5f43-4d32-99ad-ae8dabf71944" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?xsd=xsd1" />
+    <MetadataFile FileName="calculator1.xsd" MetadataType="Schema" ID="c850207f-8067-488e-9455-87aed5b7f1eb" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?xsd=xsd0" />
+    <MetadataFile FileName="calculator2.xsd" MetadataType="Schema" ID="7264f5da-8fa2-4713-8b84-66cf83aeb7c8" SourceId="1" SourceUrl="http://a5comp13:1337/calculator?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

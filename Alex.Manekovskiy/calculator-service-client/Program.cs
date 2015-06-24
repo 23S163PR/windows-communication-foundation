@@ -1,4 +1,4 @@
-﻿using calculator_service_client.ServiceReference;
+﻿using calculator_service_client.CalculatorServiceV1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
