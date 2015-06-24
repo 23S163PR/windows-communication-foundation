@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="cinemadbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Descriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutShow" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Actors" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Produsers" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DurationInMinutes" Type="int" Nullable="false" />
+          <Property Name="Scenary" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Genres" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DescriptionId" Type="int" Nullable="false" />
+          <Property Name="CinemaHallName" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PerformanceDays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="MovieId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_PerformanceDays_ShowId_Movies_id">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+          <End Role="PerformanceDays" Type="Self.PerformanceDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PerformanceDays">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Shows_DescriptionId_Descriptions_id">
+          <End Role="Descriptions" Type="Self.Descriptions" Multiplicity="1" />
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cinemadbModelStoreContainer">
+          <EntitySet Name="Descriptions" EntityType="Self.Descriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerformanceDays" EntityType="Self.PerformanceDays" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_PerformanceDays_ShowId_Movies_id" Association="Self.fk_PerformanceDays_ShowId_Movies_id">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="PerformanceDays" EntitySet="PerformanceDays" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Shows_DescriptionId_Descriptions_id" Association="Self.fk_Shows_DescriptionId_Descriptions_id">
+            <End Role="Descriptions" EntitySet="Descriptions" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="cinemadbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Descriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutShow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Actors" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Produsers" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DurationInMinutes" Type="Int32" Nullable="false" />
+          <Property Name="Scenary" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Movies" Relationship="Self.fk_Shows_DescriptionId_Descriptions_id" FromRole="Descriptions" ToRole="Movies" />
+        </EntityType>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="CinemaHallName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Descriptions" Relationship="Self.fk_Shows_DescriptionId_Descriptions_id" FromRole="Movies" ToRole="Descriptions" />
+          <NavigationProperty Name="PerformanceDays" Relationship="Self.fk_PerformanceDays_ShowId_Movies_id" FromRole="Movies" ToRole="PerformanceDays" />
+        </EntityType>
+        <EntityType Name="PerformanceDays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MovieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Movies" Relationship="Self.fk_PerformanceDays_ShowId_Movies_id" FromRole="PerformanceDays" ToRole="Movies" />
+        </EntityType>
+        <Association Name="fk_Shows_DescriptionId_Descriptions_id">
+          <End Role="Descriptions" Type="Self.Descriptions" Multiplicity="1" />
+          <End Role="Movies" Type="Self.Movies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descriptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movies">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PerformanceDays_ShowId_Movies_id">
+          <End Role="Movies" Type="Self.Movies" Multiplicity="1" />
+          <End Role="PerformanceDays" Type="Self.PerformanceDays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PerformanceDays">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="cinemadbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Descriptions" EntityType="Self.Descriptions" />
+          <EntitySet Name="Movies" EntityType="Self.Movies" />
+          <EntitySet Name="PerformanceDays" EntityType="Self.PerformanceDays" />
+          <AssociationSet Name="fk_Shows_DescriptionId_Descriptions_id" Association="Self.fk_Shows_DescriptionId_Descriptions_id">
+            <End Role="Descriptions" EntitySet="Descriptions" />
+            <End Role="Movies" EntitySet="Movies" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PerformanceDays_ShowId_Movies_id" Association="Self.fk_PerformanceDays_ShowId_Movies_id">
+            <End Role="Movies" EntitySet="Movies" />
+            <End Role="PerformanceDays" EntitySet="PerformanceDays" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="cinemadbModelStoreContainer" CdmEntityContainer="cinemadbEntities">
+          <EntitySetMapping Name="Descriptions">
+            <EntityTypeMapping TypeName="cinemadbModel.Descriptions">
+              <MappingFragment StoreEntitySet="Descriptions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AboutShow" ColumnName="AboutShow" />
+                <ScalarProperty Name="Actors" ColumnName="Actors" />
+                <ScalarProperty Name="Produsers" ColumnName="Produsers" />
+                <ScalarProperty Name="DurationInMinutes" ColumnName="DurationInMinutes" />
+                <ScalarProperty Name="Scenary" ColumnName="Scenary" />
+                <ScalarProperty Name="Genres" ColumnName="Genres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="cinemadbModel.Movies">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="CinemaHallName" ColumnName="CinemaHallName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerformanceDays">
+            <EntityTypeMapping TypeName="cinemadbModel.PerformanceDays">
+              <MappingFragment StoreEntitySet="PerformanceDays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

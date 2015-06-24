@@ -9,7 +9,7 @@ CREATE TABLE [Descriptions](
 	,[Scenary] NVARCHAR(256) NOT NULL
 	,[Genres] NVARCHAR(MAX) NOT NULL
 )
-CREATE TABLE [Shows](
+CREATE TABLE [Movies](
 	[Id] INT PRIMARY KEY NOT NULL identity(1,1)
 	,[Title] NVARCHAR(MAX) NOT NULL
 	,[DescriptionId] INT NOT NULL
@@ -21,13 +21,13 @@ CREATE TABLE [Shows](
 CREATE TABLE [PerformanceDays](
 	[Id] INT PRIMARY KEY NOT NULL identity(1,1)
 	,[Date] DATETIME NOT NULL
-	,[ShowId] INT NOT NULL
+	,[MovieId] INT NOT NULL
 	
-	CONSTRAINT fk_PerformanceDays_ShowId_Shows_id 
-	FOREIGN KEY ([ShowId]) REFERENCES [Shows](Id)
+	CONSTRAINT fk_PerformanceDays_ShowId_Movies_id 
+	FOREIGN KEY ([MovieId]) REFERENCES [Movies](Id)
 )
 
 
---drop database cinemadb
+-- drop database cinemadb
 
 
