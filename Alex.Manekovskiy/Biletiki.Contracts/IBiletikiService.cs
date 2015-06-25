@@ -11,6 +11,6 @@ namespace Biletiki.Contracts
     public interface IBiletikiService
     {
         [OperationContract]
-        IAffiche GetAffiche(IAfficheRequestParameters parameters);
+        Affiche GetAffiche(AfficheRequestParameters parameters);
     }
 }

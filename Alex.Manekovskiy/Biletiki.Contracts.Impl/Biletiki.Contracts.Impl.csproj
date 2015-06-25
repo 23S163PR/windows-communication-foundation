@@ -41,8 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Affiche.cs" />
-    <Compile Include="AfficheRequestParameters.cs" />
     <Compile Include="BiletikiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Biletiki.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Biletiki.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://a5comp13:8080/biletiki/v1?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Collections.ObjectModel" />
+  <xs:complexType name="PagingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PagingInfo" nillable="true" type="tns:PagingInfo" />
+  <xs:complexType name="ArrayOfMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Movie" nillable="true" type="tns:Movie" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovie" nillable="true" type="tns:ArrayOfMovie" />
+  <xs:complexType name="Movie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Collections.ObjectModel" minOccurs="0" name="Directors" nillable="true" type="q1:ReadOnlyCollectionOfstring" />
+      <xs:element minOccurs="0" name="DurationInMinutes" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System.Collections.ObjectModel" minOccurs="0" name="Genres" nillable="true" type="q2:ReadOnlyCollectionOfstring" />
+      <xs:element minOccurs="0" name="IMDBRating" nillable="true" type="xs:float" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowingFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ShowingTo" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System.Collections.ObjectModel" minOccurs="0" name="Stars" nillable="true" type="q3:ReadOnlyCollectionOfstring" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System.Collections.ObjectModel" minOccurs="0" name="Writers" nillable="true" type="q4:ReadOnlyCollectionOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Movie" nillable="true" type="tns:Movie" />
+</xs:schema>
