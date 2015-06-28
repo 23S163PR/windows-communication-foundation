@@ -29,5 +29,3 @@ CREATE TABLE [PerformanceDays](
 
 
 -- drop database cinemadb
-
-
