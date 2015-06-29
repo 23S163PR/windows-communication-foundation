@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://itstep.org/CalculatorSerice/V2" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://itstep.org/CalculatorSerice/V2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://itstep.org/CalculatorSerice/V2/Imports">
+      <xsd:import schemaLocation="http://localhost:1337/calculator?xsd=xsd0" namespace="http://itstep.org/CalculatorSerice/V1" />
+      <xsd:import schemaLocation="http://localhost:1337/calculator?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/calculator_service" />
+      <xsd:import schemaLocation="http://localhost:1337/calculator?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1337/calculator?xsd=xsd3" namespace="http://itstep.org/CalculatorSerice/V2" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalculatorService2_GetPythons_InputMessage">
+    <wsdl:part xmlns:q1="http://itstep.org/CalculatorSerice/V1" name="parameters" element="q1:GetPythons" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetPythons_OutputMessage">
+    <wsdl:part xmlns:q2="http://itstep.org/CalculatorSerice/V1" name="parameters" element="q2:GetPythonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetPythons_InvalidArgumentsFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/calculator_service" name="detail" element="q3:InvalidArguments" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetParrots_InputMessage">
+    <wsdl:part xmlns:q4="http://itstep.org/CalculatorSerice/V1" name="parameters" element="q4:GetParrots" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetParrots_OutputMessage">
+    <wsdl:part xmlns:q5="http://itstep.org/CalculatorSerice/V1" name="parameters" element="q5:GetParrotsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetParrots_InvalidArgumentsFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/calculator_service" name="detail" element="q6:InvalidArguments" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointPythons_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloatingPointPythons" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointPythons_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloatingPointPythonsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointPythons_InvalidArgumentsFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/calculator_service" name="detail" element="q7:InvalidArguments" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointParrots_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloatingPointParrots" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointParrots_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloatingPointParrotsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculatorService2_GetFloatingPointParrots_InvalidArgumentsFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/calculator_service" name="detail" element="q8:InvalidArguments" />
+  </wsdl:message>
+  <wsdl:portType name="ICalculatorService2">
+    <wsdl:operation name="GetPythons">
+      <wsdl:input wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetPythons" message="tns:ICalculatorService2_GetPythons_InputMessage" />
+      <wsdl:output wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetPythonsResponse" message="tns:ICalculatorService2_GetPythons_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetPythonsInvalidArgumentsFault" name="InvalidArgumentsFault" message="tns:ICalculatorService2_GetPythons_InvalidArgumentsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParrots">
+      <wsdl:input wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetParrots" message="tns:ICalculatorService2_GetParrots_InputMessage" />
+      <wsdl:output wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetParrotsResponse" message="tns:ICalculatorService2_GetParrots_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://itstep.org/CalculatorSerice/V1/ICalculatorService/GetParrotsInvalidArgumentsFault" name="InvalidArgumentsFault" message="tns:ICalculatorService2_GetParrots_InvalidArgumentsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFloatingPointPythons">
+      <wsdl:input wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointPythons" message="tns:ICalculatorService2_GetFloatingPointPythons_InputMessage" />
+      <wsdl:output wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointPythonsResponse" message="tns:ICalculatorService2_GetFloatingPointPythons_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointPythonsInvalidArgumentsFault" name="InvalidArgumentsFault" message="tns:ICalculatorService2_GetFloatingPointPythons_InvalidArgumentsFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFloatingPointParrots">
+      <wsdl:input wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointParrots" message="tns:ICalculatorService2_GetFloatingPointParrots_InputMessage" />
+      <wsdl:output wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointParrotsResponse" message="tns:ICalculatorService2_GetFloatingPointParrots_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://itstep.org/CalculatorSerice/V2/ICalculatorService2/GetFloatingPointParrotsInvalidArgumentsFault" name="InvalidArgumentsFault" message="tns:ICalculatorService2_GetFloatingPointParrots_InvalidArgumentsFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

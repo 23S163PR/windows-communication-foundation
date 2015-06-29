@@ -21,6 +21,8 @@ namespace calculator_service_host
             metadataBehavior.HttpGetEnabled = true;
 
             serviceHost.Description.Behaviors.Add(metadataBehavior);
+            var debugBehavior = (ServiceDebugBehavior)serviceHost.Description.Behaviors[typeof(ServiceDebugBehavior)];
+            debugBehavior.IncludeExceptionDetailInFaults = true;
 
             serviceHost.Open();
 
