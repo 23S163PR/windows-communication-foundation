@@ -1,9 +1,10 @@
-﻿using Biletiki.WindowsClient.Models;
-using Biletiki.WindowsClient.Service;
+﻿using Biletiki.Contracts;
+using Biletiki.WindowsClient.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,13 +33,16 @@ namespace Biletiki.WindowsClient
             Movies = new ObservableCollection<MovieModel>();
             DataContext = this;
 
-            var client = new BiletikiServiceClient();
+            var clientFactory = new ChannelFactory<IBiletikiService>("BiletikiServiceEndpoint");
+            var client = clientFactory.CreateChannel();
+
             var requestParameters = new AfficheRequestParameters() 
             { 
                 PagingInfo = new PagingInfo { PageNumber = 1, PageSize = 20 } 
             };
 
-            client.GetAfficheAsync(requestParameters)
+            Task
+                .Run(() => client.GetAffiche(requestParameters))
                 .ContinueWith(t =>
                 {
                     foreach(var movie in t.Result.Movies)
