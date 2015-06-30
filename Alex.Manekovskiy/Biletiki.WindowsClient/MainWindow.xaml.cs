@@ -33,16 +33,15 @@ namespace Biletiki.WindowsClient
             Movies = new ObservableCollection<MovieModel>();
             DataContext = this;
 
-            var clientFactory = new ChannelFactory<IBiletikiService>("BiletikiServiceEndpoint");
-            var client = clientFactory.CreateChannel();
+
+            var client = new BiletikiServiceClient("BiletikiServiceEndpoint");
 
             var requestParameters = new AfficheRequestParameters() 
             { 
                 PagingInfo = new PagingInfo { PageNumber = 1, PageSize = 20 } 
             };
 
-            Task
-                .Run(() => client.GetAffiche(requestParameters))
+            client.GetAfficheAsync(requestParameters)
                 .ContinueWith(t =>
                 {
                     foreach(var movie in t.Result.Movies)
