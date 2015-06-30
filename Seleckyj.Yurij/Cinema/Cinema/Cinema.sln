@@ -5,6 +5,18 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema", "Cinema.csproj", "{49D81496-4CDD-4481-A01E-1267209F392B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB_Parse", "..\IMDB_Parse\IMDB_Parse.csproj", "{18D1536F-DD52-468F-8026-5817E3FDE614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletiki.WindowsClient", "..\Biletiki.WindowsClient\Biletiki.WindowsClient.csproj", "{6AAF659F-B7F5-4173-B00A-040EA220481C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletiki.ConsoleHost", "..\Biletiki.ConsoleHost\Biletiki.ConsoleHost.csproj", "{BB9C53C4-2FBA-40D9-8C4A-CC26D10552F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletiki.Contracts", "..\Biletiki.Contracts\Biletiki.Contracts.csproj", "{8A238A87-B859-4A1F-9C54-56055FF881D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biletiki.Contracts.Impl", "..\Biletiki.Contracts.Impl\Biletiki.Contracts.Impl.csproj", "{2A7188C3-2CE2-434C-8EC0-4D19AEE926F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB_Show", "..\IMDB_Show\IMDB_Show.csproj", "{62E6B4EF-D7FF-47EB-967F-6B2ED81A84E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{49D81496-4CDD-4481-A01E-1267209F392B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D81496-4CDD-4481-A01E-1267209F392B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D81496-4CDD-4481-A01E-1267209F392B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D1536F-DD52-468F-8026-5817E3FDE614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D1536F-DD52-468F-8026-5817E3FDE614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D1536F-DD52-468F-8026-5817E3FDE614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D1536F-DD52-468F-8026-5817E3FDE614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AAF659F-B7F5-4173-B00A-040EA220481C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AAF659F-B7F5-4173-B00A-040EA220481C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AAF659F-B7F5-4173-B00A-040EA220481C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AAF659F-B7F5-4173-B00A-040EA220481C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9C53C4-2FBA-40D9-8C4A-CC26D10552F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9C53C4-2FBA-40D9-8C4A-CC26D10552F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9C53C4-2FBA-40D9-8C4A-CC26D10552F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9C53C4-2FBA-40D9-8C4A-CC26D10552F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A238A87-B859-4A1F-9C54-56055FF881D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A238A87-B859-4A1F-9C54-56055FF881D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A238A87-B859-4A1F-9C54-56055FF881D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A238A87-B859-4A1F-9C54-56055FF881D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7188C3-2CE2-434C-8EC0-4D19AEE926F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7188C3-2CE2-434C-8EC0-4D19AEE926F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7188C3-2CE2-434C-8EC0-4D19AEE926F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7188C3-2CE2-434C-8EC0-4D19AEE926F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E6B4EF-D7FF-47EB-967F-6B2ED81A84E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E6B4EF-D7FF-47EB-967F-6B2ED81A84E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E6B4EF-D7FF-47EB-967F-6B2ED81A84E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E6B4EF-D7FF-47EB-967F-6B2ED81A84E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
