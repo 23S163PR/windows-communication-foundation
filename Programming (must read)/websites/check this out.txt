@@ -1,0 +1,3 @@
+http://martinfowler.com/     			  // web blog by martin fowler
+http://habrahabr.ru/company/friifond/blog/260641/ // 200 блогов по разработке и проектированию.
+http://habrahabr.ru/post/210288/   		  // Шпаргалка по шаблонам проектирования
